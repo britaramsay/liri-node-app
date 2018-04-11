@@ -11,7 +11,16 @@ var client = new Twitter(keys.twitter);
 var spotify = new Spotify(keys.spotify);
 
 var arg = process.argv[2];
-// console.log(random);
+
+
+/**
+ * const fs = require('fs');
+
+fs.appendFile('message.txt', 'data to append', function (err) {
+  if (err) throw err;
+  console.log('Saved!');
+});
+ */
 checkArg(arg);
 function checkArg(arg) {
     switch(arg) {
@@ -22,6 +31,10 @@ function checkArg(arg) {
                 if(!error) {
                     tweets.forEach(element => {
                         console.log(element.text + '\n' + element.created_at);
+                        fs.appendFile('log.txt', element.text + '\n' + element.created_at + '\n\n', function (err) {
+                            if (err) throw err;
+                            console.log('Saved!');
+                        });
                     });
                 }
             });
@@ -35,10 +48,12 @@ function checkArg(arg) {
                     console.log('An error occurred: ' + err);
                 }
                 data.tracks.items.forEach(element => {
-                    console.log(element.name);
-                    console.log(element.artists[0].name);
-                    console.log(element.album.name);
-                    console.log(element.preview_url + '\n');
+                    console.log(element.name + '\n' + element.artists[0].name  + '\n' + element.album.name + '\n' + element.preview_url);
+
+                    fs.appendFile('log.txt', element.name + '\n' + element.artists[0].name  + '\n' + element.album.name + '\n' + element.preview_url + '\n\n', function (err) {
+                        if (err) throw err;
+                        console.log('Saved!');
+                    });
                 });
             });
         break;
@@ -48,17 +63,16 @@ function checkArg(arg) {
     
             request('http://www.omdbapi.com/?apikey=trilogy&t='+movie, function(error, response, body) {
                 var res = JSON.parse(body);
-                console.log(res.Title);
-                console.log(res.Year);
-                console.log(res.Actors);
-                console.log(res.Plot);
-                console.log(res.Ratings[0].Value);
-                console.log(res.Ratings[1].Value);
-                console.log(res.Country);
+
+                console.log(res.Title + '\n' + res.Year + '\n' + res.Actors + '\n' + res.Plot + '\n' + res.Ratings[0].Value + '\n' + res.Ratings[1].Value + '\n' + res.Country + '\n\n');
+
+                fs.appendFile('log.txt', res.Title + '\n' + res.Year + '\n' + res.Actors + '\n' + res.Plot + '\n' + res.Ratings[0].Value + '\n' + res.Ratings[1].Value + '\n' + res.Country + '\n\n', function (err) {
+                    if (err) throw err;
+                    console.log('Saved!');
+                });
             });
         break;
         case 'do-what-it-says':
-            // var random = require('./random.txt');
             fs.readFile('random.txt', 'utf8', function (err, data) {  
                 if(data.indexOf(',') != -1) {
                     arg = data.substring(0, data.indexOf(','));
@@ -70,5 +84,4 @@ function checkArg(arg) {
             });
         break;
     }
-    
 }
