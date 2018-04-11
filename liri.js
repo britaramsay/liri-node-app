@@ -60,12 +60,14 @@ function checkArg(arg) {
         case 'do-what-it-says':
             // var random = require('./random.txt');
             fs.readFile('random.txt', 'utf8', function (err, data) {  
-                arg = data.substring(0, data.indexOf(','));
-                process.argv[3] = data.substring(data.indexOf(',') + 1, data.length);
-                // console.log(cmd + "===" + argument);
+                if(data.indexOf(',') != -1) {
+                    arg = data.substring(0, data.indexOf(','));
+                    process.argv[3] = data.substring(data.indexOf(',') + 1, data.length);
+                }
+                else arg = data.substring(0, data.length - 1);
+
                 checkArg(arg);
             });
-    
         break;
     }
     
