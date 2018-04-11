@@ -2,6 +2,7 @@ require("dotenv").config();
 
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
+var request = require('request');
 
 var keys = require('./keys.js');
 
@@ -38,4 +39,22 @@ switch(arg) {
             });
         });
     break;
+    case 'movie-this':
+        var movie = process.argv[3];
+        if(movie == undefined) movie = 'Mr. Nobody';
+
+        request('http://www.omdbapi.com/?apikey=trilogy&t='+movie, function(error, response, body) {
+            var res = JSON.parse(body);
+            console.log(res.Title);
+            console.log(res.Year);
+            console.log(res.Actors);
+            console.log(res.Plot);
+            console.log(res.Ratings[0].Value);
+            console.log(res.Ratings[1].Value);
+            console.log(res.Country);
+
+            // console.log(body.title);
+            // console.log(body.title);
+
+        })
 }
