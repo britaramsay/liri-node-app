@@ -13,10 +13,10 @@ Install packages and obtain keys for Twitter and Spotify
 ### List of commands
 After 'node liri.js' add one of the following command line arguments:
 #### my-tweets
-##### Will display tweets from the username specified in liri.js
+Will display tweets from the username specified in liri.js
 #### movie-this specified movie
-##### If no movie is specified after 'movie-this', it will get info about Mr. Nobody. 
+If no movie is specified after 'movie-this', it will get info about Mr. Nobody. 
 #### spotify-this-song specified song
-##### If no song if specified after 'spotify-this-song', it will get info about 'The Sign'.
+If no song if specified after 'spotify-this-song', it will get info about 'The Sign'.
 #### do-what-it-says
-##### Will do one of the above commands specified in random.txt. Separate first command and desired movie/song with a comma.
+Will do one of the above commands specified in random.txt. Separate first command and desired movie/song with a comma.
