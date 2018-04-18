@@ -1,6 +1,6 @@
 # liri-node-app
 
-[![Watch the demo](demo-video.mp4)](https://britaramsay.github.io/liri-node-app/demo-video.mp4)
+[![Watch the demo]](https://britaramsay.github.io/liri-node-app/demo-video.mp4)
 
 This node application uses the Spotify and Twitter npm packages to get tweets, information about a song and the OMDb API to get information about a movie. 
 ---
