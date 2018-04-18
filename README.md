@@ -4,9 +4,9 @@
 
 This node application uses the Spotify and Twitter npm packages to get tweets, information about a song and the OMDb API to get information about a movie. 
 ---
-[Twitter for Node.js](https://www.npmjs.com/package/twitter)
-[Spotify for Node.js](https://www.npmjs.com/package/spotify)
-[The Open Movie Database](http://omdbapi.com/)
+* [Twitter for Node.js](https://www.npmjs.com/package/twitter)
+* [Spotify for Node.js](https://www.npmjs.com/package/spotify)
+* [The Open Movie Database](http://omdbapi.com/)
 ---
 Install packages and obtain keys for Twitter and Spotify
 ---
